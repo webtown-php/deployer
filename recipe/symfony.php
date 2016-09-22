@@ -35,6 +35,11 @@ set('removable_files', ['web/app_*.php', 'web/config.php']);
 // Requires non symfony-core package `kriswallsmith/assetic` to be installed
 set('dump_assets', false);
 
+// Set maintenance.html template path
+set('maintenance_template', 'app/Resources/views/maintenance.html');
+// Set maintenance.html target
+env('maintenance_target', 'web/maintenance.html');
+
 // Environment vars
 env('env_vars', 'SYMFONY_ENV={{env}}');
 
