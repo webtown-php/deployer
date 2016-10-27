@@ -19,7 +19,7 @@ set('writable_use_sudo', true); // Using sudo in writable commands?
 set('http_user', null);
 set('clear_paths', []);         // Relative path from deploy_path
 set('clear_use_sudo', true);    // Using sudo in clean commands?
-set('maintenance_template', false); // maintenance template file path, eg: temp/maintenance.html.tpl
+env('maintenance_template', false); // maintenance template file path, eg: temp/maintenance.html.tpl
 env('maintenance_target', 'maintenance.html');
 
 
@@ -422,12 +422,12 @@ task('current', function () {
 })->desc('Show current release.');
 
 task('maintenance:lock', function () {
-    if (!input()->getOption('disable-maintenance') && get('maintenance_template')) {
+    if (!input()->getOption('disable-maintenance') && env('maintenance_template')) {
         $basePath = fileExists('{{deploy_path}}/release', FILE_CHECK_IS_SYMBOLIC_LINK)
             ? env('release_path')
             : env('current');
         if (input()->getOption('maintenance-file')) {
-            set('maintenance_template', input()->getOption('maintenance-file'));
+            env('maintenance_template', input()->getOption('maintenance-file'));
         }
         if (fileExists('{{deploy_path}}/current', FILE_CHECK_IS_SYMBOLIC_LINK)) {
             if (fileExists("{$basePath}/{{maintenance_template}}") && !fileExists('{{current}}/{{maintenance_target}}')) {

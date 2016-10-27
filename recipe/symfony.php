@@ -38,7 +38,7 @@ set('removable_files', ['web/app_*.php', 'web/config.php']);
 set('dump_assets', false);
 
 // Set maintenance.html template path
-set('maintenance_template', 'app/Resources/views/maintenance.html');
+env('maintenance_template', 'app/Resources/views/maintenance.html');
 // Set maintenance.html target
 env('maintenance_target', 'web/maintenance.html');
 

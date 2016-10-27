@@ -50,7 +50,7 @@ set('removable_files', ['web/app_*.php', 'web/config.php']);
 
 env('enable_database_create', false);
 env('use_database_migration_strategy', true);
-set('maintenance_template', 'app/Resources/views/maintenance.html');
+env('maintenance_template', 'app/Resources/views/maintenance.html');
 
 // Configure servers
 server('production', 'prod.domain.com')
